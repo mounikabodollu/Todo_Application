@@ -1,0 +1,12 @@
+{
+  "name": "taskflow-smart-task-manager",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite"
+  },
+  "devDependencies": {
+    "vite": "^6.4.1"
+  }
+}

@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f6fb">
+  <meta name="description" content="Taskflow helps you plan, prioritize, and finish your day.">
+  <title>Taskflow — Smart Task Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <svg class="icon-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></symbol>
+    <symbol id="i-checks" viewBox="0 0 24 24"><path d="m8 6 2 2 4-4M8 12l2 2 4-4M8 18l2 2 4-4M18 6h3M18 12h3M18 18h3"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-done" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/><circle cx="12" cy="12" r="9"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9L12 3Z"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="m19.4 15 .1.1 1.4 1.1-1.4 2.4-1.7-.7-.2.1a8 8 0 0 1-1.4.8l-.2.1-.3 1.8h-2.8l-.3-1.8-.2-.1a8 8 0 0 1-1.4-.8l-.2-.1-1.7.7-1.4-2.4 1.4-1.1.1-.2a8 8 0 0 1 0-1.6l-.1-.2-1.4-1.1 1.4-2.4 1.7.7.2-.1a8 8 0 0 1 1.4-.8l.2-.1.3-1.8h2.8l.3 1.8.2.1a8 8 0 0 1 1.4.8l.2.1 1.7-.7 1.4 2.4-1.4 1.1-.1.2a8 8 0 0 1 0 1.6Z"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="m15 5 4 4M4 20l4-.8L19 8a2.1 2.1 0 0 0-3-3L5 16l-1 4Z"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M5 7l1 14h12l1-14M9 7V4h6v3"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5 8.5 8.5 0 1 0 20.5 14.5Z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3ZM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16Z"/></symbol>
+  </svg>
+
+  <div class="app-shell">
+    <div class="sidebar-scrim" id="sidebarScrim"></div>
+    <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+      <a class="brand" href="#" aria-label="Taskflow home">
+        <span class="brand-mark"><svg class="icon"><use href="#i-checks"/></svg></span>
+        <span>taskflow<span class="brand-dot">.</span></span>
+      </a>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="primary-nav">
+        <button class="nav-link active" data-view="dashboard"><svg class="icon"><use href="#i-grid"/></svg><span>Dashboard</span></button>
+        <button class="nav-link" data-view="all"><svg class="icon"><use href="#i-checks"/></svg><span>My Tasks</span><span class="nav-count" id="allNavCount">0</span></button>
+        <button class="nav-link" data-view="today"><svg class="icon"><use href="#i-calendar"/></svg><span>Today's Tasks</span></button>
+        <button class="nav-link" data-view="upcoming"><svg class="icon"><use href="#i-clock"/></svg><span>Upcoming Tasks</span></button>
+        <button class="nav-link" data-view="completed"><svg class="icon"><use href="#i-done"/></svg><span>Completed Tasks</span></button>
+        <button class="nav-link" data-view="important"><svg class="icon"><use href="#i-star"/></svg><span>Important Tasks</span></button>
+        <button class="nav-link" data-view="overdue"><svg class="icon"><use href="#i-calendar"/></svg><span>Overdue Tasks</span></button>
+      </nav>
+      <div class="list-heading"><span>MY LISTS</span><button class="icon-button list-add" id="addListButton" aria-label="Create a list" title="Create a list"><svg class="icon"><use href="#i-plus"/></svg></button></div>
+      <nav class="list-nav" id="listNav" aria-label="Task lists"></nav>
+      <button class="nav-link settings-link" data-view="settings"><svg class="icon"><use href="#i-settings"/></svg><span>Settings</span></button>
+      <div class="sidebar-bottom">
+        <div class="profile-avatar" id="profileAvatar" aria-hidden="true">Y</div>
+        <button class="profile-info profile-edit-button" id="editProfileButton" aria-label="Edit username">
+          <strong id="profileName">Your name</strong><span>Personal account</span>
+        </button>
+        <button class="icon-button profile-more" id="profileThemeButton" aria-label="Toggle color theme"><svg class="icon"><use href="#i-moon"/></svg></button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="icon-button menu-button" id="menuButton" aria-label="Open navigation"><svg class="icon"><use href="#i-menu"/></svg></button>
+        <div class="breadcrumb"><span>Workspace</span><span class="breadcrumb-slash">/</span><strong id="breadcrumbCurrent">Dashboard</strong></div>
+        <div class="topbar-actions">
+          <label class="search-box"><svg class="icon"><use href="#i-search"/></svg><input id="searchInput" type="search" placeholder="Search tasks..." aria-label="Search tasks"><kbd>⌘ K</kbd></label>
+          <button class="icon-button theme-button" id="themeButton" aria-label="Switch to dark mode" title="Toggle theme"><svg class="icon"><use href="#i-moon"/></svg></button>
+          <button class="button button-primary top-add-button" id="topAddButton" aria-label="New task"><svg class="icon"><use href="#i-plus"/></svg><span>New task</span></button>
+        </div>
+      </header>
+      <div class="page-content" id="pageContent">
+        <section class="view-panel" id="dashboardView">
+          <div class="welcome-row">
+            <div><p class="eyebrow" id="todayDate"></p><h1>Good day, <span class="welcome-name" id="welcomeName">there</span> <span class="wave">✦</span></h1><p class="welcome-subtitle">A little progress each day adds up to big results.</p></div>
+            <button class="button button-primary welcome-add" id="welcomeAddButton"><svg class="icon"><use href="#i-plus"/></svg> Add a task</button>
+          </div>
+          <div class="stats-grid">
+            <article class="stat-card stat-total"><div class="stat-top"><span class="stat-label">Total tasks</span><span class="stat-icon purple"><svg class="icon"><use href="#i-checks"/></svg></span></div><div class="stat-value" id="totalStat">0</div><div class="stat-note">Across all your lists</div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">Completed</span><span class="stat-icon green"><svg class="icon"><use href="#i-done"/></svg></span></div><div class="stat-value" id="completedStat">0</div><div class="stat-note"><span class="stat-positive" id="completionRate">0%</span> of all tasks</div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">In progress</span><span class="stat-icon blue"><svg class="icon"><use href="#i-clock"/></svg></span></div><div class="stat-value" id="pendingStat">0</div><div class="stat-note">Tasks still to do</div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">Overdue</span><span class="stat-icon orange"><svg class="icon"><use href="#i-calendar"/></svg></span></div><div class="stat-value" id="overdueStat">0</div><div class="stat-note">Need your attention</div></article>
+          </div>
+          <div class="dashboard-grid">
+            <section class="panel today-panel">
+              <div class="panel-heading"><div><p class="eyebrow">YOUR FOCUS</p><h2>Today's tasks</h2></div><button class="text-button" data-view="today">View all <svg class="icon"><use href="#i-arrow"/></svg></button></div>
+              <div class="progress-row"><div class="progress-track"><span id="todayProgress"></span></div><span id="todayProgressLabel">0 / 0 done</span></div>
+              <div class="task-list compact-list" id="todayTaskList"></div>
+              <button class="inline-add" id="inlineAddButton"><svg class="icon"><use href="#i-plus"/></svg> Add another task</button>
+            </section>
+            <aside class="panel progress-panel">
+              <div class="panel-heading"><div><p class="eyebrow">YOUR MOMENTUM</p><h2>Task progress</h2></div><span class="stat-icon purple"><svg class="icon"><use href="#i-spark"/></svg></span></div>
+              <div class="progress-summary"><div class="ring-progress" id="ringProgress"><div><strong id="ringPercent">0%</strong><span>complete</span></div></div></div>
+              <p class="progress-caption">Keep showing up. You're building a great habit.</p>
+              <div class="progress-legend"><span><i class="legend-dot done-dot"></i>Completed <strong id="legendDone">0</strong></span><span><i class="legend-dot todo-dot"></i>Remaining <strong id="legendPending">0</strong></span></div>
+            </aside>
+            <section class="panel upcoming-panel">
+              <div class="panel-heading"><div><p class="eyebrow">PLAN AHEAD</p><h2>Upcoming deadlines</h2></div><button class="text-button" data-view="upcoming">See schedule <svg class="icon"><use href="#i-arrow"/></svg></button></div>
+              <div class="upcoming-list" id="upcomingList"></div>
+            </section>
+          </div>
+        </section>
+
+        <section class="view-panel hidden" id="tasksView">
+          <div class="list-page-heading"><div><p class="eyebrow" id="listEyebrow">YOUR WORKSPACE</p><h1 id="tasksHeading">My tasks</h1><p class="welcome-subtitle" id="tasksSubheading">All your tasks, in one place.</p></div><button class="button button-primary" id="tasksAddButton"><svg class="icon"><use href="#i-plus"/></svg> New task</button></div>
+          <div class="task-toolbar"><div class="filter-tabs" id="filterTabs"><button class="filter-tab active" data-filter="all">All <span id="filterAllCount">0</span></button><button class="filter-tab" data-filter="pending">Pending</button><button class="filter-tab" data-filter="completed">Completed</button></div><div class="toolbar-right"><select id="sortSelect" aria-label="Sort tasks"><option value="newest">Newest first</option><option value="oldest">Oldest first</option><option value="due">Due date</option><option value="priority">Priority</option></select><button class="button button-subtle clear-completed-button" id="clearCompletedButton">Clear completed</button></div></div>
+          <div class="task-list full-task-list" id="mainTaskList"></div>
+        </section>
+
+        <section class="view-panel hidden" id="settingsView">
+          <div class="list-page-heading"><div><p class="eyebrow">MAKE IT YOURS</p><h1>Settings</h1><p class="welcome-subtitle">A few ways to make Taskflow feel like home.</p></div></div>
+          <div class="settings-grid">
+            <section class="panel setting-card"><span class="stat-icon purple"><svg class="icon"><use href="#i-moon"/></svg></span><div><h2>Appearance</h2><p>Choose the look that's easiest on your eyes.</p></div><button class="button button-subtle" id="settingsThemeButton">Switch to dark mode</button></section>
+            <section class="panel setting-card"><span class="stat-icon blue"><svg class="icon"><use href="#i-list"/></svg></span><div><h2>Manage your lists</h2><p>Create, rename, or remove your task lists.</p></div><button class="button button-subtle" id="manageListsButton">Manage lists</button></section>
+            <section class="panel setting-card"><span class="stat-icon green"><svg class="icon"><use href="#i-done"/></svg></span><div><h2>Clear completed tasks</h2><p>Remove finished tasks from your workspace.</p></div><button class="button button-subtle" id="settingsClearButton">Clear completed</button></section>
+            <section class="panel setting-card"><span class="stat-icon orange"><svg class="icon"><use href="#i-spark"/></svg></span><div><h2>Your data stays yours</h2><p>Tasks and preferences are saved in this browser.</p></div><span class="saved-label"><i></i> Saved locally</span></section>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <dialog class="modal" id="taskModal" aria-labelledby="taskModalTitle">
+    <form id="taskForm">
+      <div class="modal-heading"><div><p class="eyebrow">MAKE IT HAPPEN</p><h2 id="taskModalTitle">Create a new task</h2></div><button class="icon-button modal-close" type="button" data-close-modal aria-label="Close"><svg class="icon"><use href="#i-close"/></svg></button></div>
+      <input type="hidden" id="taskId">
+      <label class="field-label" for="taskTitle">Task title <span>*</span></label>
+      <input class="form-control" id="taskTitle" name="title" type="text" maxlength="120" placeholder="e.g. Finish the project proposal" required>
+      <label class="field-label" for="taskDescription">Description <span class="optional">(optional)</span></label>
+      <textarea class="form-control" id="taskDescription" name="description" rows="3" maxlength="500" placeholder="Add a few details..."></textarea>
+      <div class="form-row">
+        <div><label class="field-label" for="taskList">List</label><select class="form-control" id="taskList" name="list"></select></div>
+        <div><label class="field-label" for="taskPriority">Priority</label><select class="form-control" id="taskPriority" name="priority"><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option></select></div>
+      </div>
+      <div class="form-row">
+        <div><label class="field-label" for="taskDueDate">Due date</label><input class="form-control" id="taskDueDate" name="dueDate" type="date"></div>
+        <div><label class="field-label" for="taskDueTime">Due time</label><input class="form-control" id="taskDueTime" name="dueTime" type="time"></div>
+      </div>
+      <div class="modal-actions"><button class="button button-subtle" type="button" data-close-modal>Cancel</button><button class="button button-primary" type="submit" id="saveTaskButton">Add task</button></div>
+    </form>
+  </dialog>
+
+  <dialog class="modal list-modal" id="listModal" aria-labelledby="listModalTitle">
+    <form id="listForm">
+      <div class="modal-heading"><div><p class="eyebrow">STAY ORGANIZED</p><h2 id="listModalTitle">Create a list</h2></div><button class="icon-button modal-close" type="button" data-close-modal aria-label="Close"><svg class="icon"><use href="#i-close"/></svg></button></div>
+      <input type="hidden" id="listId">
+      <label class="field-label" for="listName">List name <span>*</span></label><input class="form-control" id="listName" type="text" maxlength="40" placeholder="e.g. Weekend projects" required>
+      <div class="modal-actions"><button class="button button-subtle" type="button" data-close-modal>Cancel</button><button class="button button-primary" type="submit" id="saveListButton">Create list</button></div>
+      <div class="list-manage-area hidden" id="listManageArea"><p class="field-label">Your lists</p><div id="manageListItems"></div></div>
+    </form>
+  </dialog>
+
+  <dialog class="modal profile-modal" id="profileModal" aria-labelledby="profileModalTitle">
+    <form id="profileForm">
+      <div class="modal-heading"><div><p class="eyebrow">YOUR ACCOUNT</p><h2 id="profileModalTitle">Edit your username</h2></div><button class="icon-button modal-close" type="button" data-close-modal aria-label="Close"><svg class="icon"><use href="#i-close"/></svg></button></div>
+      <label class="field-label" for="usernameInput">Username <span>*</span></label>
+      <input class="form-control" id="usernameInput" type="text" maxlength="40" autocomplete="nickname" placeholder="Enter your name" required>
+      <div class="modal-actions"><button class="button button-subtle" type="button" data-close-modal>Cancel</button><button class="button button-primary" type="submit">Save username</button></div>
+    </form>
+  </dialog>
+
+  <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="true"></div>
+  <button class="scroll-top" id="scrollTopButton" aria-label="Scroll to top" title="Scroll to top"><svg class="icon"><use href="#i-arrow"/></svg></button>
+  <script src="script.js"></script>
+</body>
+</html>
